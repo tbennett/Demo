@@ -12,7 +12,7 @@
             transition: all .5s ease-in-out;
         }
         .kf {
-            animation:slide 2s ease-in-out  5s 5;
+            animation:slide 2s ease-in-out 2;
         }
         #js {
              --animName:'slide'; /* set a css var only for box 3 */
@@ -28,9 +28,11 @@
         @keyframes slide {
             0%, 100% {
                 translate: 0%;
+                rotate: 0;
             }
             50% {
-              translate: 500%;  
+              translate: 500%; 
+              rotate: 360deg; 
             }
         }
     </style>
