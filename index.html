@@ -1,0 +1,113 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Week 3 JS Demo</title>
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <link rel="stylesheet" href="css/main.css">
+    <style>
+        
+        .ts {
+            transition: all .5s ease-in-out;
+        }
+        .kf {
+            animation:slide 2s ease-in-out  5s 5;
+        }
+        #js {
+             --animName:'slide'; /* set a css var only for box 3 */
+            animation: 2s ease-in-out infinite; /* notice no animation name—yet? */
+        }
+
+        .ts:hover {
+            opacity:.5;
+            rotate: 360deg;
+        }
+
+        @keyframes slide {
+            0%, 100% {
+                translate: 0%;
+            }
+            50% {
+              translate: 500%;  
+            }
+        }
+    </style>
+</head>
+<body>
+    <main>
+        <h1>Hello, world!</h1>
+        <section>
+            <h2>Transitions</h2>
+            <div class="container">
+
+                <div class="box ts">Box 1</div>
+
+            </div>
+        </section>
+
+         <section>
+            <h2>Keyframe Animations</h2>
+            <div class="container">
+
+                <div class="box kf">Box 2</div>
+
+            </div>
+        </section>
+
+        <section>
+            <h2>JavaScript Output</h2>
+            <div class="container">
+
+                <div id="js"  class="box">Box 3</div>
+                
+            </div>
+
+            <button id="go">Make it go</button>
+            <button id="stop">Make it stop</button>
+            <button id="change">Change the box number</button>
+            <button id="color">Change the color</button>
+            <button id="dir">Change the direction</button>
+        </section>
+    </main>
+
+    <script src="js/main.js"></script>
+    <script>
+        // Create Shortcut vars for buttons
+        let goBtn = document.getElementById('go');
+        let stopBtn = document.getElementById('stop');
+        let changeBtn = document.getElementById('change');
+        let colorBtn = document.getElementById('color');
+        let dirBtn = document.getElementById('dir');
+        let bx = document.querySelector('#js');
+        let html = document.querySelector('html');
+
+        // code to make the go button start the animation
+        goBtn.addEventListener('click', slideIt);
+
+        // makes the stop button pause the animation
+        stopBtn.addEventListener('click', function(){});
+
+        // change the text in the box to reflect user input
+        changeBtn.addEventListener('click', ()=> {});
+
+        // change the bg color of eveything that uses the --bgColor CSS variable
+        // to the user input
+        colorBtn.addEventListener('click', ()=> {});
+
+        // change the direction of the animation for box3
+        dirBtn.addEventListener('click', ()=> {
+            let bxStyle = getComputedStyle(bx);
+            let direction = bxStyle.getPropertyValue('--animName');
+
+            if(direction == "slide") {
+                bx.style.setProperty('--animName', 'slideUp');
+            } else {
+                bx.style.setProperty('--animName', 'slide');
+            }
+            slideIt();
+        });
+
+    </script>
+</body>
+</html>
