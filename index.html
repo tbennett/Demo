@@ -7,6 +7,10 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <link rel="stylesheet" href="css/main.css">
     <style>
+
+        .container {
+            border-color:green;
+        }
         
         .ts {
             transition: all .5s ease-in-out;
@@ -89,7 +93,9 @@
         goBtn.addEventListener('click', slideIt);
 
         // makes the stop button pause the animation
-        stopBtn.addEventListener('click', function(){});
+        stopBtn.addEventListener('click', function(){
+            bx.style.animationPlayState = 'paused';
+        });
 
         // change the text in the box to reflect user input
         changeBtn.addEventListener('click', ()=> {
